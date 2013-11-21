@@ -1,0 +1,54 @@
+#! /bin/sh
+### BEGIN INIT INFO
+# Provides:          goagent
+# Should-Start:      console-screen dbus network-manager
+# Required-Start:    $local_fs $remote_fs
+# Required-Stop:     $local_fs $remote_fs
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: goagent
+# Description:       goagent
+### END INIT INFO
+#
+# Author:       Luke Luo
+#
+set -e
+
+PATH=/sbin:/bin:/usr/sbin:/usr/bin
+DAEMON=/usr/local/goagent/proxy.py
+
+test -x $DAEMON || exit 0
+
+if [ -r /etc/default/locale ]; then
+  . /etc/default/locale
+  export LANG LANGUAGE
+fi
+
+. /lib/lsb/init-functions
+
+
+
+case "$1" in
+  start)
+	sudo -u luke -g luke python $DAEMON 2>&1 > /usr/local/goagent/proxy.log &
+  ;;
+  stop)
+	sudo -u luke -g luke pkill -u luke -f $DAEMON
+  ;;
+  reload)
+  ;;
+  status)
+        
+  ;;
+  restart|force-reload)
+	sudo -u luke -g luke pkill -u luke -f $DAEMON
+	sudo -u luke -g luke python $DAEMON 2>&1 > /usr/local/goagent/proxy.log &
+
+  ;;
+  *)
+        echo "Usage: goagent start/stop/restart"
+        exit 1
+  ;;
+esac
+
+exit 0
