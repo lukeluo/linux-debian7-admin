@@ -30,7 +30,7 @@ fi
 
 case "$1" in
   start)
-	sudo -u luke -g luke python $DAEMON 2>&1 > /usr/local/goagent/proxy.log &
+	sudo -u luke -g luke -b python $DAEMON   > /usr/local/goagent/proxy.log  2>&1 < /dev/null
   ;;
   stop)
 	sudo -u luke -g luke pkill -u luke -f $DAEMON
@@ -42,7 +42,7 @@ case "$1" in
   ;;
   restart|force-reload)
 	sudo -u luke -g luke pkill -u luke -f $DAEMON
-	sudo -u luke -g luke python $DAEMON 2>&1 > /usr/local/goagent/proxy.log &
+	sudo -u luke -g luke -b python $DAEMON   > /usr/local/goagent/proxy.log  2>&1 < /dev/null
 
   ;;
   *)
