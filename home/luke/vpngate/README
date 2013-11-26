@@ -1,0 +1,64 @@
+Usage:
+	./vpngate.sh  csv/connect/disconnect/status
+
+
+	csv:  download new vpn server csv list from www.vpngate.net and select "good" servers from the list
+		currently, I thing good server justifies:
+
+        #1:hostname
+        #2:IP
+        #3:score
+        #4:ping
+        #5:speed
+        #6:countrylong
+        #7:countryshort
+        #8:numvpnsession
+        #9:uptime
+        #10:totalusers
+        #11:totaltraffic
+        #12:Logtype
+        #13:Operator
+        #14:Message
+        #15:Openvpn_configdata_base64
+
+
+        if (($7 == "JP" || $7 == "KR") \
+                 && ($3 > 450000)  \
+                 && ($5 > 40000000) \
+                 && ($4 < 80) \
+                 && ($8 < 10) \
+           )
+
+
+	country is Korea/Japan;
+	score > 450000
+	speed > 40Mb
+	ping delay < 80ms
+	number of current sessions < 10
+
+	
+		
+	status:  display current vpn connection status
+	connect:  connect  to one of the select "good" vpn server and set up routing
+	disconnect : disconnet from vpn server and revert routing table to default
+
+
+	generally, "./vpngate.sh connect/disconnect" will be the major usage scenario most of time.
+
+	every time a connect is executed, it will first disconnect. 
+
+	You need enter "sudo" password while updating system routing table. 
+
+
+	Enjoy!
+
+
+
+	
+
+
+
+	
+
+	
+       
