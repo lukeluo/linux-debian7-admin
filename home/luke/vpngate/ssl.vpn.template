@@ -1,0 +1,52 @@
+﻿# VPN Client VPN Connection Setting File
+# 
+# This file is exported using the VPN Client Manager.
+# The contents of this file can be edited using a text editor.
+# 
+# When this file is imported to the Client Connection Manager
+#  it can be used immediately.
+
+declare root
+{
+	bool CheckServerCert false
+	uint64 CreateDateTime 0
+	uint64 LastConnectDateTime 0
+	bool StartupAccount false
+	uint64 UpdateDateTime 0
+
+	declare ClientAuth
+	{
+		uint AuthType 0
+		string Username vpn
+	}
+	declare ClientOption
+	{
+		string AccountName sslvpn
+		string Hostname 114.154.50.50
+		uint Port 1688
+		uint AdditionalConnectionInterval 1
+		uint ConnectionDisconnectSpan 0
+		string DeviceName se
+		bool DisableQoS false
+		bool HalfConnection false
+		bool HideNicInfoWindow false
+		bool HideStatusWindow false
+		string HubName vpngate
+		uint MaxConnection 1
+		bool NoRoutingTracking false
+		bool NoTls1 false
+		bool NoUdpAcceleration false
+		uint NumRetry 4294967295
+		uint PortUDP 0
+		string ProxyName $
+		byte ProxyPassword $
+		uint ProxyPort 0
+		uint ProxyType 0
+		string ProxyUsername $
+		bool RequireBridgeRoutingMode false
+		bool RequireMonitorMode false
+		uint RetryInterval 15
+		bool UseCompress false
+		bool UseEncrypt true
+	}
+}
