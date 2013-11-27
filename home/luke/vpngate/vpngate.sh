@@ -20,6 +20,7 @@ fi
 if  [ "x$1" == "xstatus" ];
 then
 	cat vpnlist.cmd | vpncmd
+	ip route
 	exit 0;
 fi
 

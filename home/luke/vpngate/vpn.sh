@@ -35,7 +35,7 @@ echo $(cat vpndel.cmd | vpncmd | grep "^VPN Server Hostname" | cut -d "|" -f 2 |
 
 # ensure ip/port is open via nc(netcat). 
 
-alive=$(nc --timeout=1 $2 $3 < /dev/random )
+alive=$(nc -z --timeout=1 $2 $3 )
 
 if [ "x$alive" == "x" ]; then
 	echo "nc $2:$3 succeeds.";
@@ -59,7 +59,7 @@ echo $(cat vpndel.cmd | vpncmd | grep "^VPN Server Hostname" | cut -d "|" -f 2 |
 cat vpnimport.cmd | vpncmd
 cat vpnconnect.cmd | vpncmd  
 
-sleep 1
+sleep 3
 
 isConnected=$(cat vpnlist.cmd | vpncmd | grep  Status  | cut -d "|" -f 2)
 
@@ -77,13 +77,16 @@ echo $(cat vpnlist.cmd | vpncmd | grep "^VPN Server Hostname" | cut -d "|" -f 2 
 
 # test if vpnconnection is up
 
-ping -q -c 2 youtube.com
 
-if [ $? -eq 0 ]; then
-    echo "vpn connection to $2:$3 SUCCEEDS!"
-    exit 0;
+connected=$(nc -z --timeout=1 www.youtube.com 80 )
+
+if [ "x$connected" == "x" ]; then
+        echo "vpn connection to $2:$3 succeeds.";
+	exit 0;
 else
-    echo "vpn connection to $2:$3 FAILS!"
-    exit 1;
+        echo "vpn connection to $2:$3 fails.";
+        exit 1;
 fi
+
+
 

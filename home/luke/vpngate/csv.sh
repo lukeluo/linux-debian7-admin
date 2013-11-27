@@ -8,7 +8,7 @@ while read line
 
 		echo "downloading csv.raw from $line ......"
 
-		wget -e use_proxy=yes -e http_proxy=127.0.0.1:8087 -O csv.raw --timeout=5 --tries=2 $line
+		wget -O csv.raw --timeout=10 --tries=2 $line
 
 		if [ $? -eq 0 ];
 		then 
