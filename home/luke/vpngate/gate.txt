@@ -1,0 +1,80 @@
+
+Today's VPN Gate web site's daily mirror URLs are following.
+
+1. http://pl071.nas82c.p-tokyo.nttpc.ne.jp:55595/
+   (Location: Japan)
+
+2. http://pl901.nas825.p-tokyo.nttpc.ne.jp:36513/
+   (Location: Japan)
+
+3. http://pl1129.nas82c.p-tokyo.nttpc.ne.jp:3552/
+   (Location: Japan)
+
+4. http://em36-244-89-127.pool.e-mobile.ne.jp:64754/
+   (Location: Japan)
+
+5. http://5.61.36.16:42259/
+   (Location: United Kingdom)
+
+
+--- Announcements from VPN Gate Project ---
+* 2013-04-28
+
+In order to enhance the connectivity, upgrade your VPN Gate Client Plug-in to Build 9078 (2013.04.28) or greater if you are using older VPN Gate Client Plug-in than Build 9078 as soon as possible.
+
+You can download the latest VPN Gate Client from
+http://www.vpngate.net/
+or above mirror sites.
+
+Thank you!
+
+VPN Gate Project Team at University of Tsukuba, Japan.
+
+--- End of Official Announcements ---
+
+*** Current Status Report ***
+
+VPN Gate has 72,040,580 VPN users from 210 different countries, from 2013/03/08 to 2013/11/26.
+Total transferred traffic through VPN is 2,868,789.82 GB.
+
+Thank you for using VPN Gate all over the World !
+
+
+--- VPN Gate User Countries Realtime Top 10 Ranking ---
+No. 1: Korea Republic of (3,445,622 Users, 971,676.93 GB)
+No. 2: China (10,472,319 Users, 394,161.64 GB)
+No. 3: Taiwan (20,123,725 Users, 290,090.66 GB)
+No. 4: United States (1,421,147 Users, 259,185.15 GB)
+No. 5: Japan (2,889,327 Users, 210,535.54 GB)
+No. 6: Hong Kong (1,401,584 Users, 84,586.43 GB)
+No. 7: Malaysia (1,003,958 Users, 81,321.98 GB)
+No. 8: Iran (ISLAMIC Republic Of) (5,045,363 Users, 70,542.35 GB)
+No. 9: Viet Nam (4,924,121 Users, 65,419.25 GB)
+No. 10: France (223,146 Users, 37,544.21 GB)
+The full ranking is available at http://www.vpngate.net/en/region.aspx page.
+
+
+* Post above mirror URLs on your local forums, SNS and microblogs
+  to help other people around you.
+  People behind the Government's Frewall are waiting for your help.
+  They cannot reach to the VPN Gate web site
+  unless they obtain the first Mirror URL.
+
+* This e-mail is sent to you as you registered in VPN Gate web site.
+  If you want to stop this e-mail, please visit:
+  http://www.vpngate.net/en/mail_stop.aspx
+
+* If your mail server identifies this e-mail as a SPAM
+  please add vpngate-daily@vpngate.net to the exclusion list.
+
+Have a nice day!
+
+------------------------------------------------------
+VPN Gate Public VPN Relay Servers
+Academic Experiment at University of Tsukuba, Japan
+http://www.vpngate.net/
+vpngate-daily@vpngate.net
+* Do not reply to this e-mail.
+  You can unsubscribe at http://www.vpngate.net/en/mail_stop.aspx
+
+
