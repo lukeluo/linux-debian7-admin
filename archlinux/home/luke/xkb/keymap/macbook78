@@ -1,0 +1,7 @@
+xkb_keymap {
+	xkb_keycodes  { include "evdev+aliases(qwerty)"	};
+	xkb_types     { include "complete+numpad(mac)+macbook78"	};
+	xkb_compat    { include "complete"	};
+	xkb_symbols   { include "pc+macintosh_vndr/us+inet(evdev)+terminate(ctrl_alt_bksp)+macbook78"	};
+	xkb_geometry  { include "macintosh(macbook78)"	};
+};

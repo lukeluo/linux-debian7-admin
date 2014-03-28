@@ -1,0 +1,13 @@
+partial default xkb_types 
+{
+	virtual_modifiers Super;
+
+    type "PC_SUPER_LEVEL2" {
+        modifiers= Super;
+        map[Super]= Level2;
+        level_name[Level1]= "Base";
+        level_name[Level2]= "Super";
+    };
+	
+};
+

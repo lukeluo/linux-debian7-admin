@@ -1,0 +1,15 @@
+keycode 103 = Up        Scroll_Backward   Up                      
+        control keycode 103 = Up                      
+        shift   control keycode 103 = Up                      
+        altgr   control keycode 103 = Up                      
+        alt     keycode 103 = KeyboardSignal  
+        shift   alt     keycode 103 = Up                      
+        control alt     keycode 103 = Up                      
+
+keycode 108 = Down      Scroll_Forward   Down            
+        control keycode 108 = Down            
+        shift   control keycode 108 = Down            
+        altgr   control keycode 108 = Down            
+        alt     keycode 108 = Down            
+        shift   alt     keycode 108 = Down            
+        control alt     keycode 108 = Down          
