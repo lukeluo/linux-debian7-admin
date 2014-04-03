@@ -1,43 +1,12 @@
 
-keycode 103 = Up        Scroll_Backward   Up                      
-        control keycode 103 = Prior
-        shift   control keycode 103 =  Scroll_Backward
-        altgr   control keycode 103 = Up                      
-        alt     keycode 103 = KeyboardSignal  
-        shift   alt     keycode 103 = Up                      
-        control alt     keycode 103 = Up                      
+keycode 125 = Control
+keycode 126 = Control
 
-keycode 108 = Down      Scroll_Forward   Down            
-        control keycode 108 = Next
-        shift   control keycode 108 =  Scroll_Forward
-        altgr   control keycode 108 = Down            
-        alt     keycode 108 = Down            
-        shift   alt     keycode 108 = Down            
-        control alt     keycode 108 = Down          
-
-keycode 105 = Left             Left             Left
-        control keycode 105 = Home
-        shift   control keycode 105 = Left
-        altgr   control keycode 105 = Left
-        alt     keycode 105 = Decr_Console
-        shift   alt     keycode 105 = Left
-        control alt     keycode 105 = Left
-
-keycode 106 = Right            Right            Right
-        control keycode 106 = End
-        shift   control keycode 106 = Right
-        altgr   control keycode 106 = Right
-        alt     keycode 106 = Incr_Console
-        shift   alt     keycode 106 = Right
-        control alt     keycode 106 = Right
-
-keycode  14 = Delete           Delete           Delete
-        control keycode  14 = Remove
-        shift   control keycode  14 = Delete
-        altgr   control keycode  14 = Delete
-        alt     keycode  14 = Meta_Delete
-        shift   alt     keycode  14 = Meta_Delete
-        control alt     keycode  14 = Meta_Delete
+control keycode 103 = Prior
+control keycode 108 = Next
+control keycode 105 = Home
+control keycode 106 = End
+control keycode  14 = Remove
 
 
 
