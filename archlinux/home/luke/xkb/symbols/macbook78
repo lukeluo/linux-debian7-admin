@@ -1,10 +1,14 @@
 partial default xkb_symbols "basic"
 {
-    name[Group1] = "mac super";
     key <LEFT>  { [ Left, Home ], type[Group1] = "PC_SUPER_LEVEL2" };
     key <RGHT> { [ Right, End ], type[Group1] = "PC_SUPER_LEVEL2" };
     key <UP>    { [ Up, Prior ], type[Group1] = "PC_SUPER_LEVEL2" };
     key <DOWN>  { [ Down, Next ], type[Group1] = "PC_SUPER_LEVEL2" };
+
+    key <BKSP> {
+        type= "CTRL+ALT",
+        symbols[Group1]= [       BackSpace,       Delete,        NoSymbol,        NoSymbol, Terminate_Server ]
+    };
 
 };
 
