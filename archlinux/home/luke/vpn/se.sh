@@ -14,16 +14,17 @@ VPNCONNECT_WAIT=3
 export http_proxy="http://127.0.0.1:8087"
 
 # Quality of Service parameters  for selecting vpn servers
-# default country code (short)
+
+# default country code (short), to select vpn server from these countries
 CC=JP,KR
 
-# MINSPEED  (in bits/second)
+# MINSPEED  (in bits/second), network speed should be greater than MINSPEED
 MINSPEED=40000000
 
-# MINSCORE the "quality" parameter provided by vpngate.net
-MINSCORE=400000
+# MINSCORE the "quality" parameter provided by vpngate.net, greater than
+MINSCORE=450000
 
-# MAXSESSION  the current connected sessions in vpn servers
+# MAXSESSION  the current connected sessions in vpn servers, less than
 MAXSESSION=20
 
 function vlist()
@@ -69,6 +70,7 @@ function routeadd()
 function validate()
 {
 
+	
 	rm -f server.txt
 	local goodserver=0
 
