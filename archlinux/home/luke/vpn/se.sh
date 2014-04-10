@@ -151,7 +151,7 @@ function connect()
 	do
 		
 		 if [ "x$cc" != "x" ]; then 
-			 echo $server | grep -i -E "$cc" >/dev/null || continue
+			 echo $server | grep -q -i -E "$cc" || continue
 		 fi
 		
 		disconnect
@@ -165,7 +165,7 @@ function connect()
 		sed -e "s/string Hostname.*$/string Hostname $ip/g" -e "s/uint Port.*$/uint Port $port/g" vpn.template > vpn.def
 		vconnect
 
-		vlist | grep -i Connected > /dev/null  || continue
+		vlist | grep -i -q Connected  || continue
 
 		routeadd $ip
 
