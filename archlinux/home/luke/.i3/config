@@ -21,16 +21,17 @@ font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 # font pango:DejaVu Sans Mono 10
 
 font pango:monospace 10
-#exec --no-startup-id xset r rate 200 45
-
-#syndaemon
-#exec --no-startup-id syndaemon -k -K -d  -i 0.5 
 
 # default layout set to stacking
-exec_always i3-msg layout stacking
+exec_always --no-startup-id  i3-msg layout tabbed
+#exec_always --no-startup-id  xsetroot -gray
+exec_always --no-startup-id  xbacklight -set 7
+exec_always --no-startup-id   feh --bg-scale ~/wallpaper/Wave.jpg
+#exec_always --no-startup-id   nitrogen --restore
 
 # startup google chromium
-bindsym $mod+G exec --no-startup-id chromium
+#bindsym $mod+G exec --no-startup-id chromium
+bindsym $mod+G exec --no-startup-id google-chrome-stable
 
 # startup firefox
 bindsym $mod+X exec --no-startup-id firefox
@@ -39,18 +40,23 @@ bindsym $mod+X exec --no-startup-id firefox
 bindsym $mod+C exec --no-startup-id gnome-commander
 
 #screen brightness 
-bindsym XF86MonBrightnessDown exec "cd /sys/class/backlight/gmux_backlight/; cur=$(cat brightness); cur=$((cur-20)) ; if [ $cur -lt 1 ]; then cur=5; fi; echo $cur | sudo tee brightness " 
-bindsym XF86MonBrightnessUp   exec "cd /sys/class/backlight/gmux_backlight/; cur=$(cat brightness); cur=$((cur+20)) ; if [ $cur -gt 1023 ]; then cur=1023; fi; echo $cur | sudo tee brightness " 
+bindsym XF86MonBrightnessDown exec --no-startup-id "cd /sys/class/backlight/gmux_backlight/; cur=$(cat brightness); cur=$((cur-20)) ; if [ $cur -lt 1 ]; then cur=5; fi; echo $cur | sudo tee brightness " 
+#bindsym XF86MonBrightnessDown exec --no-startup-id "xbacklight -dec 1"
+
+bindsym XF86MonBrightnessUp   exec --no-startup-id "cd /sys/class/backlight/gmux_backlight/; cur=$(cat brightness); cur=$((cur+20)) ; if [ $cur -gt 1023 ]; then cur=1023; fi; echo $cur | sudo tee brightness " 
+
+#bindsym XF86MonBrightnessUp   exec --no-startup-id "xbacklight -inc 1"
+
 
 #kebyboard LED  brightness 
-bindsym XF86KbdBrightnessDown exec "cd /sys/class/leds/smc::kbd_backlight; cur=$(cat brightness); cur=$((cur-5)); if [ $cur -lt 0 ]; then cur=0; fi; echo $cur | sudo tee brightness " 
-bindsym XF86KbdBrightnessUp   exec "cd /sys/class/leds/smc::kbd_backlight; cur=$(cat brightness); cur=$((cur+5)); if [ $cur -gt 255 ]; then cur=255; fi; echo $cur | sudo tee brightness " 
+bindsym XF86KbdBrightnessDown exec --no-startup-id "cd /sys/class/leds/smc::kbd_backlight; cur=$(cat brightness); cur=$((cur-5)); if [ $cur -lt 0 ]; then cur=0; fi; echo $cur | sudo tee brightness " 
+bindsym XF86KbdBrightnessUp   exec --no-startup-id "cd /sys/class/leds/smc::kbd_backlight; cur=$(cat brightness); cur=$((cur+5)); if [ $cur -gt 255 ]; then cur=255; fi; echo $cur | sudo tee brightness " 
 
 #volume adjustment
 
-bindsym XF86AudioRaiseVolume exec "amixer sset Master unmute;  amixer sset Master 2%+ "
-bindsym XF86AudioLowerVolume exec "amixer sset Master unmute ; amixer sset Master 2%- "
-bindsym XF86AudioMute 	 exec amixer sset Master toggle
+bindsym XF86AudioRaiseVolume exec --no-startup-id "amixer sset Master unmute;  amixer sset Master 2%+ "
+bindsym XF86AudioLowerVolume exec --no-startup-id "amixer sset Master unmute ; amixer sset Master 2%- "
+bindsym XF86AudioMute 	 exec --no-startup-id amixer sset Master toggle
 
 
 # kill focused window
@@ -64,7 +70,7 @@ bindsym $mod+Return exec --no-startup-id gnome-terminal
 
 
 #dmenu (a program launcher)
-bindsym $mod+d exec dmenu_run -fn "Monospace:10" 
+bindsym $mod+d exec dmenu_run -fn "Monospace:8" 
 
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
@@ -84,9 +90,9 @@ bindsym $mod+semicolon focus right
 #bindsym $mod+Right focus right
 
 # move focused window
-bindsym $mod+Shift+j move left
+bindsym $mod+Shift+j move up
 bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
+bindsym $mod+Shift+l move left
 bindsym $mod+Shift+semicolon move right
 
 # alternatively, you can use the cursor keys:
@@ -161,16 +167,16 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 10 px or 10 ppt
+        bindsym l resize shrink width 10 px or 10 ppt
         bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
+        bindsym j resize shrink height 10 px or 10 ppt
         bindsym semicolon resize grow width 10 px or 10 ppt
 
         # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
         bindsym Down resize grow height 10 px or 10 ppt
         bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
 
         # back to normal: Enter or Escape
         bindsym Return mode "default"
