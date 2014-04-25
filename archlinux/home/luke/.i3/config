@@ -29,6 +29,11 @@ exec_always --no-startup-id  xbacklight -set 7
 exec_always --no-startup-id   feh --bg-scale ~/wallpaper/Wave.jpg
 #exec_always --no-startup-id   nitrogen --restore
 
+# scratchpad 
+bindsym $mod+period move scratchpad
+bindsym $mod+comma scratchpad show
+
+
 # startup google chromium
 #bindsym $mod+G exec --no-startup-id chromium
 bindsym $mod+G exec --no-startup-id google-chrome-stable
