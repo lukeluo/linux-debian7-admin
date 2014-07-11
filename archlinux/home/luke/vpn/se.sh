@@ -6,6 +6,9 @@ VPNCMD=/usr/local/vpnclient/vpncmd
 # default gateway in your network
 DEFGATEWAY=192.168.100.1
 
+# default gateway in your network
+DEFIF=wlp3s0
+
 # the softether vpn link name
 VPNIF=vpn_se
 
@@ -36,6 +39,15 @@ MAXSESSION=20
 
 # directory to store generated openvpn config file
 OPENVPNDIR="/home/luke/work/vpn/openvpn/"
+
+function switchdns()
+{
+	sudo resolvconf -d $DEFIF
+	echo "NAMESERVERS=$1" | sudo resolvconf -a $DEFIF
+	sudo resolvconf -u
+	return 0
+
+}
 
 function vlist()
 {
@@ -190,10 +202,11 @@ function server()
 		ip=$(echo $server | cut -d ' ' -f 1)
 		tcp=$(echo $server | cut -d ' ' -f 2)
 		udp=$(echo $server | cut -d ' ' -f 3)
-
 		
 		[ $udp != "0" ] && grep -A 100 -B 2 $ip openvpn.conf.all | grep "</key>" -B 100 | sed -e "s/proto.*$/proto udp/g" -e "s/remote .*$/remote $ip $udp/g" > $OPENVPNDIR/$ip
-		
+		# prepare ovpn for tunnelblick openvpn under Mac
+		mkdir $OPENVPNDIR/$ip.tblk
+		cp $OPENVPNDIR/$ip  $OPENVPNDIR/$ip.tblk/$ip.ovpn
 
 	done < server.txt
 	
@@ -315,7 +328,7 @@ function ipconnect()
 		#sudo systemctl restart openswan
 		#sudo systemctl restart xl2tpd
 		echo "connecting to $server..."
-		localip=$(ip a show dev wlp3s0 up | grep inet | grep -v inet6 | sed -e 's/\/.*$//g' -e 's/.*inet //g')
+		localip=$(ip a show dev $DEFIF up | grep inet | grep -v inet6 | sed -e 's/\/.*$//g' -e 's/.*inet //g')
 		
 		sed -e "s/conn .*/conn $server/g" -e "s/right=.*/right=$server/g" -e "s/left=.*/left=$localip/g" -e "s/leftnexthop=.*/leftnexthop=$DEFGATEWAY/g" ipsec.template > ipsec.conf
 		sudo ipsec addconn --config ./ipsec.conf --addall
@@ -327,7 +340,7 @@ function ipconnect()
 		iprouteadd $server
 		
 
-		nc -z -w1 youtube.com 80 &&  echo "vpn connect to $server success!" && break
+		nc -z -w1 youtube.com 80 &&  echo "vpn connect to $server success!" &&  break
 		ipdisconnect
 
 	done < ipsec.server
@@ -375,7 +388,7 @@ function oconnect()
 		sudo systemctl start openvpn@$ip
 		sleep  $VPNCONNECT_WAIT
 
-		(journalctl -u openvpn@$ip | grep "Initialization Sequence Completed" > /dev/null ) && nc -z -w1 youtube.com 80 &&  echo "openvpn connect to $ip $udp $country success!" && break
+		(journalctl -u openvpn@$ip | grep "Initialization Sequence Completed" > /dev/null ) &&  nc -z -w1 youtube.com 80 &&  echo "openvpn connect to $ip $udp $country success!" && break
 
 		sudo systemctl stop openvpn@$ip
 		
@@ -417,6 +430,9 @@ case $1 in
 ;;
 'csv')
 	csv	
+;;
+'switchdns')
+	switchdns $2
 ;;
 *)
 	echo "parameter error.  ./se.sh  connect|disconnect|server|validate|csv"
