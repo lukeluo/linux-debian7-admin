@@ -4,7 +4,7 @@
 VPNCMD=/usr/local/vpnclient/vpncmd
 
 # default gateway in your network
-DEFGATEWAY=192.168.100.1
+DEFGATEWAY=192.168.200.1
 
 # default gateway in your network
 DEFIF=wlp3s0
